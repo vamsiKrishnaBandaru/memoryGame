@@ -86,16 +86,35 @@ createDivsForColors(shuffledColors);
 
 function checkMatch() {
   if (firstCard.classList[1] === secondCard.classList[1]) {
+    correctPick(firstCard, secondCard)
     resetCards();
   } else {
-    setTimeout(() => {
-      firstCard.classList.add('backgroundImg');
-      secondCard.classList.add('backgroundImg');
-      resetCards();
-    }, 1000);
+    wrongPick(firstCard, secondCard)
   }
 }
 
+
+function correctPick(card1, card2) {
+  card1.classList.add('correct-pick');
+  card2.classList.add('correct-pick');
+  setTimeout(() => {
+    card1.classList.remove('correct-pick');
+    card2.classList.remove('correct-pick');
+    resetCards();
+  }, 1000);
+}
+
+function wrongPick(card1, card2) {
+  card1.classList.add('wrong-pick');
+  card2.classList.add('wrong-pick');
+  setTimeout(() => {
+    card1.classList.add('backgroundImg', 'wrong-pick');
+    card2.classList.add('backgroundImg', 'wrong-pick');
+    card1.classList.remove('wrong-pick');
+    card2.classList.remove('wrong-pick');
+    resetCards();
+  }, 1000);
+}
 
 function resetCards() {
   firstCard = null;

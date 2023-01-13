@@ -19,6 +19,7 @@ body {
   flex-direction: column;
   font-family: "Open Sans", sans-serif;
   gap: 5rem;
+  margin-top: 5rem;
 }
 h2 {
   font-size: 8rem;
@@ -27,7 +28,8 @@ h2 {
   align-self: center;
   display: flex;
   justify-content: center;
-  width: 70%;
+  width: 60%;
+  margin-top: 15rem;
 }
 
 #game {
@@ -37,16 +39,20 @@ h2 {
   gap: 4rem;
   justify-content: center;
   padding: 3rem;
-  width: 70%;
+  border: 2px solid #ffff;
 }
 
 #game div {
-  padding: 15rem 13rem;
+  border-radius: 8rem;
 }
+
+.card {
+  padding: 15rem;
+}
+
 .backgroundImg {
   background: url("images/frontface.png") no-repeat;
   background-size: cover;
-  background-position-x: center;
 }
 
 @keyframes scroll {
@@ -58,5 +64,48 @@ h2 {
 @media (prefers-reduced-motion) {
   .wrapper {
     animation: scroll 200s linear infinite;
+  }
+}
+
+.wrong-pick {
+  animation: shake 2s ease infinite;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-15px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(15px);
+  }
+}
+
+.correct-pick {
+  animation: gelatine 0.5s infinite;
+}
+@keyframes gelatine {
+  from,
+  to {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
   }
 }
