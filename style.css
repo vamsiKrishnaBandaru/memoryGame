@@ -11,6 +11,7 @@ body {
   animation: scroll 70s linear infinite;
   background: url("https://images.unsplash.com/photo-1465146633011-14f8e0781093?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"),
     #111111;
+  background-size: 100%;
   color: #eee;
   display: flex;
   justify-content: center;
@@ -19,33 +20,33 @@ body {
   font-family: "Open Sans", sans-serif;
   gap: 5rem;
 }
-
+h2 {
+  font-size: 8rem;
+}
 .wrapper {
-  width: 50%;
-  border: 2px solid red;
   align-self: center;
   display: flex;
   justify-content: center;
+  width: 70%;
 }
 
 #game {
   display: flex;
   flex-wrap: wrap;
   align-self: center;
-  gap: 1rem;
+  gap: 4rem;
   justify-content: center;
-  border: 1px solid white;
-
+  padding: 3rem;
+  width: 70%;
 }
 
 #game div {
-  border: 1px solid white;
-  /* background:red ; */
-  /* background: url("images/frontface.png") no-repeat; */
-  /* background-size: cover; */
-  /* width: 50%; */
-  padding: 5rem;
-  /* display: inline-block; */
+  padding: 15rem 13rem;
+}
+.backgroundImg {
+  background: url("images/frontface.png") no-repeat;
+  background-size: cover;
+  background-position-x: center;
 }
 
 @keyframes scroll {
@@ -58,47 +59,4 @@ body {
   .wrapper {
     animation: scroll 200s linear infinite;
   }
-}
-
-/* 
-@media (min-width: 670px) {
-  .title {
-    font-size: 5rem;
-  }
-} */
-
-.card {
-  width: 100px;
-  height: 100px;
-  background-color: gray;
-}
-
-.match {
-  background-color: white;
-}
-
-
-.card.is-flipped {
-  transform: translateX(-100%) rotateY(-180deg);
-}
-
-.card__face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  line-height: 260px;
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  font-size: 40px;
-  backface-visibility: hidden;
-}
-
-.card__face--front {
-  background: crimson;
-}
-
-.card__face--back {
-  background: slateblue;
-  transform: rotateY(180deg);
 }

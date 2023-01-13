@@ -42,12 +42,11 @@ function createDivsForColors(colorArray) {
   for (let color of colorArray) {
 
     const newDiv = document.createElement("div");
-    const frontFace = document.createElement("img");
-    const backFace = document.createElement("img");
 
-    frontFace.style.backgroundSize = "cover";
     newDiv.classList.add("card", color);
-    console.log(newDiv);
+    newDiv.classList.add("backgroundImg")
+    console.log(newDiv)
+
     newDiv.addEventListener("click", handleCardClick);
 
     gameContainer.append(newDiv);
@@ -62,6 +61,8 @@ function handleCardClick(event) {
   }
   const clickedCard = event.target;
   clickedCard.style.backgroundColor = event.target.className
+  clickedCard.classList.remove('backgroundImg')
+  console.log(clickedCard)
 
   if (!firstCard) {
     firstCard = clickedCard;
@@ -75,11 +76,6 @@ function handleCardClick(event) {
     locked = true;
     checkMatch();
   }
-
-  // setTimeout(() => {
-  //   clicked.style.backgroundColor = 'white'
-  // }, 2000)
-  // console.log("you clicked", event.target);
 }
 
 // when the DOM loads
@@ -90,13 +86,11 @@ createDivsForColors(shuffledColors);
 
 function checkMatch() {
   if (firstCard.classList[1] === secondCard.classList[1]) {
-    firstCard.classList.add("match");
-    secondCard.classList.add("match");
     resetCards();
   } else {
     setTimeout(() => {
-      firstCard.style.backgroundColor = "gray";
-      secondCard.style.backgroundColor = "gray";
+      firstCard.classList.add('backgroundImg');
+      secondCard.classList.add('backgroundImg');
       resetCards();
     }, 1000);
   }
