@@ -1,5 +1,6 @@
-const gameContainer = document.getElementsById("game");
-
+const gameContainer = document.getElementById("game");
+let firstCard, secondCard;
+let locked = false;
 const COLORS = [
   "red",
   "blue",
@@ -32,27 +33,23 @@ function shuffle(array) {
     array[counter] = array[index];
     array[index] = temp;
   }
-
   return array;
 }
 
 let shuffledColors = shuffle(COLORS);
 
-// this function loops over the array of colors
-// it creates a new div and gives it a class with the value of the color
-// it also adds an event listener for a click for each card
 function createDivsForColors(colorArray) {
   for (let color of colorArray) {
-    // create a new div
+
     const newDiv = document.createElement("div");
+    const frontFace = document.createElement("img");
+    const backFace = document.createElement("img");
 
-    // give it a class attribute for the value we are looping over
-    newDiv.classList.add(color);
-
-    // call a function handleCardClick when a div is clicked on
+    frontFace.style.backgroundSize = "cover";
+    newDiv.classList.add("card", color);
+    console.log(newDiv);
     newDiv.addEventListener("click", handleCardClick);
 
-    // append the div to the element with an id of game
     gameContainer.append(newDiv);
   }
 }
@@ -60,8 +57,54 @@ function createDivsForColors(colorArray) {
 // TODO: Implement this function!
 function handleCardClick(event) {
   // you can use event.target to see which element was clicked
-  console.log("you clicked",event.target);
+  if (locked) {
+    return;
+  }
+  const clickedCard = event.target;
+  clickedCard.style.backgroundColor = event.target.className
+
+  if (!firstCard) {
+    firstCard = clickedCard;
+    firstCard.style.backgroundColor = firstCard.classList[1];
+    return;
+  }
+
+  if (!secondCard) {
+    secondCard = clickedCard;
+    secondCard.style.backgroundColor = secondCard.classList[1];
+    locked = true;
+    checkMatch();
+  }
+
+  // setTimeout(() => {
+  //   clicked.style.backgroundColor = 'white'
+  // }, 2000)
+  // console.log("you clicked", event.target);
 }
 
 // when the DOM loads
 createDivsForColors(shuffledColors);
+
+
+// Check if the two clicked cards match
+
+function checkMatch() {
+  if (firstCard.classList[1] === secondCard.classList[1]) {
+    firstCard.classList.add("match");
+    secondCard.classList.add("match");
+    resetCards();
+  } else {
+    setTimeout(() => {
+      firstCard.style.backgroundColor = "gray";
+      secondCard.style.backgroundColor = "gray";
+      resetCards();
+    }, 1000);
+  }
+}
+
+
+function resetCards() {
+  firstCard = null;
+  secondCard = null;
+  locked = false;
+}
