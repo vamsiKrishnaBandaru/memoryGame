@@ -18,13 +18,6 @@ const COLORS = [
   "orange",
   "purple"
 ];
-let colorList = [
-  "red",
-  "blue",
-  "green",
-  "orange",
-  "purple"
-]
 
 startButton.addEventListener('click', () => {
   startButton.style.display = 'none';
@@ -87,9 +80,7 @@ function handleCardClick(event) {
     firstCard = clickedCard;
     firstCard.style.backgroundColor = firstCard.classList[1];
     return;
-  }
-
-  if (!secondCard) {
+  } else if (!secondCard) {
     secondCard = clickedCard;
     secondCard.style.backgroundColor = secondCard.classList[1];
     locked = true;
@@ -107,11 +98,19 @@ function compareBothCards() {
 
   if (firstCard.classList[1] === secondCard.classList[1]) {
 
-    if (colorList.includes(firstCard.classList[1])) {
+    if (COLORS.includes(firstCard.classList[1])) {
+      COLORS.filter((element, index, arr) => {
+        if (element === firstCard.classList[1]) {
+          arr.splice(index, 1);
+          return true;
+        }
+        return false;
+      })
 
-      const index = colorList.indexOf(firstCard.classList[1]);
-      colorList.splice(index, 1);
-      let counter = 5 - colorList.length;
+      const index = COLORS.indexOf(firstCard.classList[1]);
+      COLORS.splice(index, 1);
+      console.log(COLORS)
+      let counter = Math.floor(5 - (COLORS.length / 2))
 
       correctPick(firstCard, secondCard)
       count.textContent = "Score: " + counter
