@@ -1,4 +1,9 @@
 const gameContainer = document.getElementById("game");
+const gameSection = document.querySelector(".wrapper");
+const title = document.querySelector(".title");
+const startButton = document.querySelector('.homePage')
+const count = document.querySelector('.count');
+
 let firstCard, secondCard;
 let locked = false;
 const COLORS = [
@@ -13,10 +18,23 @@ const COLORS = [
   "orange",
   "purple"
 ];
+let colorList = [
+  "red",
+  "blue",
+  "green",
+  "orange",
+  "purple"
+]
 
+startButton.addEventListener('click', () => {
+  startButton.style.display = 'none';
+  gameSection.style.display = 'block';
+  title.style.display = 'block';
+});
 // here is a helper function to shuffle an array
 // it returns the same array with values shuffled
 // it is based on an algorithm called Fisher Yates if you want ot research more
+
 function shuffle(array) {
   let counter = array.length;
 
@@ -57,12 +75,13 @@ function createDivsForColors(colorArray) {
 function handleCardClick(event) {
   // you can use event.target to see which element was clicked
   if (locked) {
+    resetCards()
     return;
   }
+
   const clickedCard = event.target;
   clickedCard.style.backgroundColor = event.target.className
   clickedCard.classList.remove('backgroundImg')
-  console.log(clickedCard)
 
   if (!firstCard) {
     firstCard = clickedCard;
@@ -74,7 +93,7 @@ function handleCardClick(event) {
     secondCard = clickedCard;
     secondCard.style.backgroundColor = secondCard.classList[1];
     locked = true;
-    checkMatch();
+    compareBothCards();
   }
 }
 
@@ -84,10 +103,20 @@ createDivsForColors(shuffledColors);
 
 // Check if the two clicked cards match
 
-function checkMatch() {
+function compareBothCards() {
+
   if (firstCard.classList[1] === secondCard.classList[1]) {
-    correctPick(firstCard, secondCard)
-    resetCards();
+
+    if (colorList.includes(firstCard.classList[1])) {
+
+      const index = colorList.indexOf(firstCard.classList[1]);
+      colorList.splice(index, 1);
+      let counter = 5 - colorList.length;
+
+      correctPick(firstCard, secondCard)
+      count.textContent = "Score: " + counter
+      resetCards();
+    }
   } else {
     wrongPick(firstCard, secondCard)
   }
@@ -101,15 +130,18 @@ function correctPick(card1, card2) {
     card1.classList.remove('correct-pick');
     card2.classList.remove('correct-pick');
     resetCards();
-  }, 1000);
+  }, 500);
 }
 
 function wrongPick(card1, card2) {
+
   card1.classList.add('wrong-pick');
   card2.classList.add('wrong-pick');
   setTimeout(() => {
+
     card1.classList.add('backgroundImg', 'wrong-pick');
     card2.classList.add('backgroundImg', 'wrong-pick');
+
     card1.classList.remove('wrong-pick');
     card2.classList.remove('wrong-pick');
     resetCards();

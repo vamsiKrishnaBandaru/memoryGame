@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Lobster&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Public+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Press+Start+2P&family=Public+Sans:wght@300&display=swap");
+/* font-family: 'Open Sans', sans-serif;
+font-family: 'Public Sans', sans-serif; */
 
 * {
   padding: 0;
@@ -8,28 +9,51 @@
 }
 
 body {
-  animation: scroll 70s linear infinite;
-  background: url("https://images.unsplash.com/photo-1465146633011-14f8e0781093?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"),
-    #111111;
-  background-size: 100%;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   color: #eee;
   display: flex;
   justify-content: center;
   align-items: center;
+  align-content: center;
   flex-direction: column;
-  font-family: "Open Sans", sans-serif;
-  gap: 5rem;
-  margin-top: 5rem;
+  font-family: "Press Start 2P", cursive;
+  min-height: 80vh;
+  gap: 20rem;
 }
+
 h2 {
-  font-size: 8rem;
+  font-size: 10rem;
+}
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 20rem;
+  display: none;
+}
+.homePage button {
+  align-self: center;
+  border: none;
+  outline-style: none;
+  padding: 1.6rem;
+  font-size: 4rem;
+  border-radius: 2rem;
+  font-family: "Open Sans", sans-serif;
+}
+
+button:hover {
+  transform: scale(1.03);
+}
+.title {
+  display: none;
+  text-align: center;
+  font-size: 10rem;
 }
 .wrapper {
-  align-self: center;
-  display: flex;
-  justify-content: center;
   width: 60%;
-  margin-top: 15rem;
+  align-self: center;
 }
 
 #game {
@@ -39,7 +63,6 @@ h2 {
   gap: 4rem;
   justify-content: center;
   padding: 3rem;
-  border: 2px solid #ffff;
 }
 
 #game div {
@@ -49,12 +72,27 @@ h2 {
 .card {
   padding: 15rem;
 }
+.card:hover {
+  transform: scale(1.03);
+}
 
 .backgroundImg {
   background: url("images/frontface.png") no-repeat;
   background-size: cover;
 }
 
+.correct-pick {
+  animation: gelatine 0.5s infinite;
+}
+
+.wrong-pick {
+  animation: shake 2s ease infinite;
+}
+.count {
+  font-family: "Open Sans", sans-serif;
+  font-size: 5rem;
+  font-weight: 800;
+}
 @keyframes scroll {
   100% {
     background-position: 0px -3000px;
@@ -65,10 +103,6 @@ h2 {
   .wrapper {
     animation: scroll 200s linear infinite;
   }
-}
-
-.wrong-pick {
-  animation: shake 2s ease infinite;
 }
 
 @keyframes shake {
@@ -91,9 +125,6 @@ h2 {
   }
 }
 
-.correct-pick {
-  animation: gelatine 0.5s infinite;
-}
 @keyframes gelatine {
   from,
   to {
@@ -107,5 +138,17 @@ h2 {
   }
   75% {
     transform: scale(0.95, 1.05);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
