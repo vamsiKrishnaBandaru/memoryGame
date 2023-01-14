@@ -89,6 +89,7 @@ function handleCardClick(event) {
   if (!firstCard) {
     firstCard = clickedCard;
     if (COLORS.includes(firstCard.classList[1])) {
+
       flipCounter -= 1
       flipCount.textContent = "Flips remaining : " + flipCounter
       firstCard.style.backgroundColor = firstCard.classList[1];
@@ -98,8 +99,10 @@ function handleCardClick(event) {
       return
     }
   } else if (firstCard != clickedCard) {
+
     secondCard = clickedCard;
     if (COLORS.includes(secondCard.classList[1])) {
+
       flipCounter -= 1
       flipCount.textContent = "Flips remaining : " + flipCounter
       secondCard.style.backgroundColor = secondCard.classList[1];
@@ -160,9 +163,11 @@ function compareBothCards() {
 
 
 function correctPick(card1, card2) {
+
   card1.classList.add('correct-pick');
   card2.classList.add('correct-pick');
   setTimeout(() => {
+
     card1.classList.remove('correct-pick');
     card2.classList.remove('correct-pick');
     resetCards();
