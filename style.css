@@ -31,9 +31,9 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 20rem;
-  display: none;
 }
-.homePage button {
+.homePage button,
+.lostMsg button {
   align-self: center;
   border: none;
   outline-style: none;
@@ -54,6 +54,8 @@ button:hover {
 .wrapper {
   width: 60%;
   align-self: center;
+  display: none;
+  margin-top: 5rem;
 }
 
 #game {
@@ -88,10 +90,50 @@ button:hover {
 .wrong-pick {
   animation: shake 2s ease infinite;
 }
-.count {
+.score-Sec {
+  padding: 4rem;
+  margin-top: 2rem;
+}
+.count,
+.flipCount {
   font-family: "Open Sans", sans-serif;
-  font-size: 5rem;
-  font-weight: 800;
+  font-size: 4rem;
+  font-weight: 700;
+}
+.successMsg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 10rem;
+  display: none;
+}
+
+.successMsg h5 {
+  font-size: 10rem;
+  font-family: "Open Sans", sans-serif;
+}
+.successMsg p {
+  font-size: 4rem;
+  padding: 10rem;
+  font-family: "Public Sans", sans-serif;
+}
+
+.lostMsg {
+  font-size: 10rem;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  font-family: "Open Sans", sans-serif;
+  display: none;
+}
+.lostMsg button {
+  margin-top: 10rem;
+}
+.lostMsgbtn a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
 }
 @keyframes scroll {
   100% {

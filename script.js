@@ -2,11 +2,18 @@ const gameContainer = document.getElementById("game");
 const gameSection = document.querySelector(".wrapper");
 const title = document.querySelector(".title");
 const startButton = document.querySelector('.homePage')
+
 const count = document.querySelector('.count');
+const flipCount = document.querySelector('.flipCount');
+
+const successMsg = document.querySelector('.successMsg');
+const lostMsg = document.querySelector('.lostMsg');
 
 let firstCard, secondCard;
-let locked = false;
-const COLORS = [
+let pairSelected = false;
+let flipCounter = 24;
+
+let COLORS = [
   "red",
   "blue",
   "green",
@@ -24,6 +31,8 @@ startButton.addEventListener('click', () => {
   gameSection.style.display = 'block';
   title.style.display = 'block';
 });
+
+
 // here is a helper function to shuffle an array
 // it returns the same array with values shuffled
 // it is based on an algorithm called Fisher Yates if you want ot research more
@@ -67,8 +76,8 @@ function createDivsForColors(colorArray) {
 // TODO: Implement this function!
 function handleCardClick(event) {
   // you can use event.target to see which element was clicked
-  if (locked) {
-    resetCards()
+  if (pairSelected) {
+    // resetCards()
     return;
   }
 
@@ -78,13 +87,27 @@ function handleCardClick(event) {
 
   if (!firstCard) {
     firstCard = clickedCard;
-    firstCard.style.backgroundColor = firstCard.classList[1];
-    return;
-  } else if (!secondCard) {
+    if (COLORS.includes(firstCard.classList[1])) {
+      flipCounter -= 1
+      flipCount.textContent = "Flips remaining : " + flipCounter
+      firstCard.style.backgroundColor = firstCard.classList[1];
+      return;
+    } else {
+      firstCard = null
+      return
+    }
+  } else if (firstCard != clickedCard) {
     secondCard = clickedCard;
-    secondCard.style.backgroundColor = secondCard.classList[1];
-    locked = true;
-    compareBothCards();
+    if (COLORS.includes(secondCard.classList[1])) {
+      flipCounter -= 1
+      flipCount.textContent = "Flips remaining : " + flipCounter
+      secondCard.style.backgroundColor = secondCard.classList[1];
+      pairSelected = true;
+      compareBothCards();
+    } else {
+      secondCard = null
+      return
+    }
   }
 }
 
@@ -99,25 +122,38 @@ function compareBothCards() {
   if (firstCard.classList[1] === secondCard.classList[1]) {
 
     if (COLORS.includes(firstCard.classList[1])) {
-      COLORS.filter((element, index, arr) => {
-        if (element === firstCard.classList[1]) {
-          arr.splice(index, 1);
-          return true;
-        }
-        return false;
-      })
 
-      const index = COLORS.indexOf(firstCard.classList[1]);
-      COLORS.splice(index, 1);
-      console.log(COLORS)
-      let counter = Math.floor(5 - (COLORS.length / 2))
+      let array = COLORS.filter((element) => {
+
+        if (element === firstCard.classList[1]) {
+          return false
+        }
+        return true
+      })
+      COLORS = array
+      let counter = 5 - (COLORS.length / 2)
 
       correctPick(firstCard, secondCard)
       count.textContent = "Score: " + counter
       resetCards();
+      if (counter === 5) {
+        setTimeout(() => {
+          gameSection.style.display = 'none';
+          title.style.display = 'none';
+          successMsg.style.display = 'block';
+        }, 1000)
+      }
     }
   } else {
     wrongPick(firstCard, secondCard)
+  }
+
+  if (flipCounter === 0) {
+    setTimeout(() => {
+      gameSection.style.display = 'none';
+      title.style.display = 'none';
+      lostMsg.style.display = 'block';
+    }, 1000)
   }
 }
 
@@ -150,5 +186,5 @@ function wrongPick(card1, card2) {
 function resetCards() {
   firstCard = null;
   secondCard = null;
-  locked = false;
+  pairSelected = false;
 }
