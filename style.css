@@ -54,11 +54,10 @@ button:hover {
   margin-top: 3rem;
 }
 .wrapper {
-  width: 90%;
+  width: 75.8rem;
   align-self: center;
   display: none;
   margin-top: 1rem;
-  border: 1px solid red;
 }
 
 #game {
@@ -227,7 +226,7 @@ button:hover {
     border-radius: 2rem;
   }
   .wrapper {
-    width: auto;
+    width: 65rem;
     height: auto;
     align-self: center;
     display: none;
@@ -253,11 +252,11 @@ button:hover {
   }
 }
 
-@media (min-width: 1300px) {
+/* @media (max-width: 1400px) {
   .wrapper {
-    width: 86%;
+    width: 85%;
   }
-}
+} */
 
 @media (max-width: 1200px) {
   h2 {
