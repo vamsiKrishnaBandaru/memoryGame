@@ -72,6 +72,7 @@ button:hover {
 }
 
 .card {
+  width: 3rem;
   padding: 15rem;
 }
 .card:hover {
@@ -114,7 +115,8 @@ button:hover {
   font-family: "Open Sans", sans-serif;
 }
 .successMsg p {
-  font-size: 4rem;
+  font-size: 5rem;
+  font-weight: 500;
   padding: 10rem;
   font-family: "Public Sans", sans-serif;
 }
@@ -192,5 +194,65 @@ button:hover {
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 1200px) {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    height: auto;
+    width: auto;
+    flex-wrap: wrap;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+
+  .homePage {
+    gap: 3rem;
+  }
+  .homePage button,
+  .lostMsg button {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  .title {
+    font-size: 2rem;
+    margin-top: 5rem;
+  }
+  .wrapper {
+    width: auto;
+    align-self: center;
+    display: none;
+    padding: 0;
+    margin-top: -15rem;
+  }
+  .card {
+    width: auto;
+    padding: 5rem;
+  }
+  .count,
+  .flipCount {
+    font-size: 1.5rem;
+  }
+  .successMsg {
+    gap: 3rem;
+  }
+
+  .successMsg h5 {
+    font-size: 4rem;
+    font-family: "Open Sans", sans-serif;
+  }
+  .successMsg p {
+    font-size: 2.5rem;
+    padding: 2rem;
+  }
+
+  .lostMsg {
+    font-size: 4rem;
   }
 }
