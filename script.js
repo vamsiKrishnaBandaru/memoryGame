@@ -12,6 +12,7 @@ const lostMsg = document.querySelector('.lostMsg');
 let firstCard, secondCard;
 let pairSelected = false;
 let flipCounter = 22;
+let Wincount;
 
 let COLORS = [
   "red",
@@ -131,12 +132,12 @@ function compareBothCards() {
         return true
       })
       COLORS = array
-      let counter = 5 - (COLORS.length / 2)
+      Wincount = 5 - (COLORS.length / 2)
 
       correctPick(firstCard, secondCard)
-      count.textContent = "Score: " + counter
+      count.textContent = "Score: " + Wincount
       resetCards();
-      if (counter === 5) {
+      if (Wincount === 5) {
         setTimeout(() => {
           gameSection.style.display = 'none';
           title.style.display = 'none';
@@ -148,7 +149,7 @@ function compareBothCards() {
     wrongPick(firstCard, secondCard)
   }
 
-  if (flipCounter === 0) {
+  if (flipCounter === 0 && Wincount != 5) {
     setTimeout(() => {
       gameSection.style.display = 'none';
       title.style.display = 'none';

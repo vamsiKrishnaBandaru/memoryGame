@@ -54,7 +54,7 @@ button:hover {
   margin-top: 3rem;
 }
 .wrapper {
-  width: 85%;
+  width: 83%;
   align-self: center;
   display: none;
   margin-top: 1rem;
@@ -209,11 +209,11 @@ button:hover {
   }
 }
 
-/* @media (max-width: 1200px) {
+@media (max-width: 1200px) {
   body {
     height: auto;
     width: auto;
-    gap: 3rem;
+    gap: 10rem;
   }
   h2 {
     font-size: 2rem;
@@ -225,7 +225,57 @@ button:hover {
     font-size: 1.2rem;
     border-radius: 2rem;
   }
-} */
+  .wrapper {
+    width: auto;
+    height: auto;
+    align-self: center;
+    display: none;
+    padding: 0;
+    margin: 0;
+  }
+  .card {
+    width: auto;
+    padding: auto;
+    height: auto;
+  }
+  .homePage button,
+  .lostMsg button {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+  .lostMsg {
+    font-size: 3rem;
+  }
+  .lostMsg p {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  h2 {
+    font-size: 4rem;
+    line-height: 6rem;
+  }
+  .homePage button,
+  .lostMsg button {
+    padding: 1rem;
+    font-size: 2.2rem;
+    border-radius: 2rem;
+  }
+  .lostMsg button {
+    padding: 1.2rem;
+    font-size: 2rem;
+    border-radius: 2rem;
+  }
+  .lostMsg {
+    font-size: 8rem;
+  }
+  .lostMsg p {
+    font-size: 2.4rem;
+    margin-top: 2rem;
+  }
+}
 /* 
 @media (max-width: 1270px) {
   body {
