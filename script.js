@@ -11,7 +11,7 @@ const lostMsg = document.querySelector('.lostMsg');
 
 let firstCard, secondCard;
 let pairSelected = false;
-let flipCounter = 24;
+let flipCounter = 22;
 
 let COLORS = [
   "red",
