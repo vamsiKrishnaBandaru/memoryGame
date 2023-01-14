@@ -19,7 +19,7 @@ body {
   align-content: center;
   flex-direction: column;
   font-family: "Press Start 2P", cursive;
-  min-height: 80vh;
+  min-height: 100vh;
   gap: 20rem;
 }
 
