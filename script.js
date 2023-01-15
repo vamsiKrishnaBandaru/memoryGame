@@ -2,9 +2,13 @@ const gameContainer = document.getElementById("game");
 const gameSection = document.querySelector(".wrapper");
 const title = document.querySelector(".title");
 const startButton = document.querySelector('.homePage')
-
+const levelSec = document.querySelector(".levelSec")
 const count = document.querySelector('.count');
 const flipCount = document.querySelector('.flipCount');
+
+const easy = document.querySelector('.easy');
+const medium = document.querySelector('.medium');
+const hard = document.querySelector('.hard');
 
 const successMsg = document.querySelector('.successMsg');
 const lostMsg = document.querySelector('.lostMsg');
@@ -29,10 +33,17 @@ let COLORS = [
 
 startButton.addEventListener('click', () => {
   startButton.style.display = 'none';
-  gameSection.style.display = 'block';
-  title.style.display = 'block';
+  // gameSection.style.display = 'block';
+  // title.style.display = 'block';
+  levelSec.style.display = 'block';
+  levelSec.style.display = 'flex';
 });
 
+medium.addEventListener('click', () => {
+  gameSection.style.display = 'block';
+  title.style.display = 'block';
+  levelSec.style.display = 'none';
+})
 
 // here is a helper function to shuffle an array
 // it returns the same array with values shuffled
@@ -117,7 +128,6 @@ function handleCardClick(event) {
 
 // when the DOM loads
 createDivsForColors(shuffledColors);
-
 
 // Check if the two clicked cards match
 

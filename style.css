@@ -42,8 +42,25 @@ h2 {
   font-family: "Open Sans", sans-serif;
 }
 
+.levelSec {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  display: none;
+}
+
+.levelSec button {
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  border-radius: 2rem;
+  font-family: "Open Sans", sans-serif;
+  border: none;
+  outline-style: none;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
 button:hover {
   transform: scale(1.03);
+  cursor: pointer;
 }
 .title {
   display: none;
@@ -56,6 +73,9 @@ button:hover {
   align-self: center;
   display: none;
   margin-top: 1rem;
+}
+.wrapper h2 {
+  margin-bottom: 5rem;
 }
 
 #game {
@@ -78,6 +98,7 @@ button:hover {
 }
 .card:hover {
   transform: scale(1.03);
+  cursor: pointer;
 }
 
 .backgroundImg {
@@ -97,13 +118,6 @@ button:hover {
 .score-Sec {
   padding: 4rem;
   margin-top: 2rem;
-}
-
-.count,
-.flipCount {
-  font-family: "Open Sans", sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
 }
 
 .successMsg {
@@ -134,6 +148,7 @@ button:hover {
   font-family: "Open Sans", sans-serif;
   display: none;
 }
+
 .lostMsg p {
   font-size: 1.4rem;
   margin-top: 2rem;
@@ -147,6 +162,19 @@ button:hover {
   color: black;
   font-weight: 500;
 }
+
+.score-Sec {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.score-Sec {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 @keyframes scroll {
   100% {
     background-position: 0px -3000px;
