@@ -99,6 +99,7 @@ h4 {
   align-self: center;
   display: none;
   padding: 1rem;
+  margin-right: -3rem;
 }
 
 #game {
@@ -113,8 +114,9 @@ h4 {
 }
 
 .card {
-  padding: 2rem;
+  padding: 1.5rem;
   display: flex;
+  border: 1px solid #fff;
 }
 
 .card:hover {
@@ -128,6 +130,7 @@ h4 {
   background-position-x: center;
   /* width: 3rem;
   height: 6rem; */
+  object-fit: cover;
   padding: 4rem;
   /* display: none; */
 }
