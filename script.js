@@ -86,7 +86,6 @@ function createDivsForGifs(allGifs) {
     const frontFace = document.createElement("div");
     const backFace = document.createElement("div");
 
-
     newDiv.classList.add("card", gif);
 
     frontFace.classList.add("frontface");
@@ -115,19 +114,19 @@ function handleCardClick(event) {
     return;
   }
   // firstCard.classList[1]
-  const clickedCard = event.target;
-  if (clickedCard.className === "frontface") {
-    clickedCard.style.display = "none";
-    clickedCard.nextElementSibling.style.display = "block";
+  const clickedCard = event.target.parentElement;
+  if (event.target.className == "frontface") {
+    event.target.style.display = 'none';
+    event.target.nextElementSibling.style.display = "block";
   }
 
   if (!firstCard) {
     firstCard = clickedCard;
     if (gifs.includes(firstCard.classList[1])) {
-
+      console.log('1111111111111111111')
+      console.log(firstCard)
       flipCounter -= 1
-      flipCount.textContent = "Flips remaining : " + flipCounter
-      firstCard.style.backgroundColor = firstCard.classList[1];
+      flipCount.textContent = "Flips remaining : " + flipCounter;
       return;
     } else {
       firstCard = null
@@ -136,11 +135,11 @@ function handleCardClick(event) {
   } else if (firstCard != clickedCard) {
 
     secondCard = clickedCard;
-    if (gifs.includes(secondCard.classList[1])) {
+    if (gifs.includes(firstCard.classList[1])) {
+      console.log('22222222222222222222222')
 
       flipCounter -= 1
       flipCount.textContent = "Flips remaining : " + flipCounter
-      secondCard.style.backgroundColor = secondCard.classList[1];
       pairSelected = true;
       compareBothCards();
     } else {
@@ -214,13 +213,16 @@ function wrongPick(card1, card2) {
   card2.classList.add('wrong-pick');
   setTimeout(() => {
 
-    card1.classList.add('src', 'wrong-pick');
-    card2.classList.add('src', 'wrong-pick');
+    card1.children[0].style.display = 'block';
+    card1.children[1].style.display = 'none';
+
+    card2.children[0].style.display = 'block';
+    card2.children[1].style.display = 'none';
 
     card1.classList.remove('wrong-pick');
     card2.classList.remove('wrong-pick');
     resetCards();
-  }, 1000);
+  }, 1200);
 }
 
 function resetCards() {
