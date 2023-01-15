@@ -3,7 +3,7 @@
 * {
   padding: 0;
   margin: 0;
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 }
 
 body {
@@ -30,10 +30,8 @@ header {
   float: right;
   display: flex;
   justify-content: flex-end;
-  width: 100%;
-  margin-top: -4rem;
+  width: 90%;
   margin-bottom: 3rem;
-  margin-left: 3rem;
   padding: 2rem;
   display: none;
 }
@@ -99,6 +97,7 @@ h4 {
   display: none;
   padding: 1rem;
   margin-right: -3rem;
+  width: 95%;
 }
 
 #game {
@@ -114,9 +113,8 @@ h4 {
 }
 
 .card {
-  padding: 1.5rem;
+  padding: 1.3rem;
   display: flex;
-  border: 1px solid #fff;
 }
 
 .card:hover {
@@ -131,14 +129,14 @@ h4 {
   /* width: 3rem;
   height: 6rem; */
   object-fit: cover;
-  padding: 3rem;
+  padding: 3.2rem;
   /* display: none; */
 }
 
 .backface {
   /* width: 3rem;
   height: 6rem; */
-  padding: 3rem;
+  padding: 3.2rem;
   display: none;
 }
 
@@ -319,7 +317,7 @@ h4 {
   .count,
   .flipCount,
   .bestScrore {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .lostMsg p {
