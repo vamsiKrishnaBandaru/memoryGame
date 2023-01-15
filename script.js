@@ -235,7 +235,7 @@ function wrongPick(card1, card2) {
 
     card1.classList.remove('wrong-pick');
     card2.classList.remove('wrong-pick');
-  }, 1500);
+  }, 1250);
   resetCards();
 }
 
