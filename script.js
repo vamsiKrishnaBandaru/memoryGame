@@ -81,9 +81,9 @@ hard.addEventListener('click', () => {
 
 function checkLocalStorageScore(levelName) {
   if (localStorage.getItem(levelName)) {
-    bestscore.textContent = `Best Score: ${localStorage.getItem(levelName)}`;
+    bestscore.textContent = `Best: ${localStorage.getItem(levelName)}`;
   } else {
-    levelName.textContent = `Best Score: 0`;
+    levelName.textContent = `Best: 0`;
   }
 }
 // filling the array with gif names
@@ -154,6 +154,7 @@ function createDivsForGifs(allGifs) {
 }
 
 // TODO: Implement this function!
+
 function handleCardClick(event) {
   // you can use event.target to see which element was clicked
   if (pairSelected) {
@@ -194,20 +195,10 @@ function handleCardClick(event) {
   }
 }
 
-// when the DOM loads
 
-// createDivsForGifs(shuffledGifs);
 
 // Check if the two clicked cards match
 
-// result messages after finishing game
-
-function resultMessage(msg) {
-  gameSection.style.display = 'none';
-  title.style.display = 'none';
-  homebtn.style.display = 'none';
-  msg.style.display = 'block';
-}
 
 
 // comparing both cards if success the card will be removed from the main array
@@ -283,8 +274,8 @@ function wrongPick(card1, card2) {
 
     card1.classList.remove('wrong-pick');
     card2.classList.remove('wrong-pick');
-  }, 1250);
-  resetCards();
+    resetCards();
+  }, 1100);
 }
 
 
@@ -297,14 +288,9 @@ function showBestScore(levelName, flipCounter, initialFlipCount) {
   if (localStorage.getItem(levelName)) {
 
     let presentScore = localStorage.getItem(levelName);
-    if (presentScore !== "undefined") {
-      bestscore.textContent = `Best Score: ${actualScore}`
-      bestscore.style.visibility = "visible";
-    }
 
     if (presentScore === "undefined" || Number(presentScore) > (actualScore)) {
       localStorage.setItem(levelName, actualScore);
-      bestscore.textContent = `Best Score: ${actualScore}`
     }
   } else {
     localStorage.setItem(levelName, actualScore);
@@ -312,6 +298,15 @@ function showBestScore(levelName, flipCounter, initialFlipCount) {
 }
 
 // resetCards when user selects two cards
+
+// result messages after finishing game
+
+function resultMessage(msg) {
+  gameSection.style.display = 'none';
+  title.style.display = 'none';
+  homebtn.style.display = 'none';
+  msg.style.display = 'block';
+}
 
 function resetCards() {
   firstCard = null;
