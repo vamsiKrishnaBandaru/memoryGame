@@ -17,7 +17,6 @@ let firstCard, secondCard;
 let pairSelected = false;
 let flipCounter = 22;
 let Wincount;
-
 let COLORS = [
   "red",
   "blue",
@@ -32,31 +31,53 @@ let COLORS = [
 ];
 
 
-const array = Array(12).fill(0)
-const gifs = array.map((element, index) => {
+
+
+
+// startButton.style.display = 'none';
+// gameSection.style.display = 'block';
+// title.style.display = 'block';
+
+startButton.addEventListener('click', () => {
+  levelSec.style.display = 'block';
+  levelSec.style.display = 'flex';
+});
+
+startButton.addEventListener('click', () => {
+  startButton.style.display = 'none';
+  // gameSection.style.display = 'block';
+  // title.style.display = 'block';
+  levelSec.style.display = 'block';
+  levelSec.style.display = 'flex';
+});
+
+levelSec.addEventListener('click', () => {
+  gameSection.style.display = 'block';
+  title.style.display = 'block';
+  levelSec.style.display = 'none';
+})
+
+// easy.addEventListener('click', () => {
+//   cardsCount = 6;
+// })
+
+// medium.addEventListener('click', () => {
+//   cardsCount = 8;
+// })
+
+// hard.addEventListener('click', () => {
+//   cardsCount = 12;
+// })
+
+
+
+let array = Array(12).fill(0)
+let gifs = array.map((element, index) => {
   return `${element + index + 1}.gif`;
 })
 
 gifs.push(...gifs);
 
-
-startButton.style.display = 'none';
-gameSection.style.display = 'block';
-title.style.display = 'block';
-startButton.addEventListener('click', () => {
-  // levelSec.style.display = 'block';
-  // levelSec.style.display = 'flex';
-});
-
-// medium.addEventListener('click', () => {
-//   gameSection.style.display = 'block';
-//   title.style.display = 'block';
-//   levelSec.style.display = 'none';
-// })
-
-// here is a helper function to shuffle an array
-// it returns the same array with values shuffled
-// it is based on an algorithm called Fisher Yates if you want ot research more
 
 function shuffle(array) {
   let counter = array.length;
@@ -124,7 +145,7 @@ function handleCardClick(event) {
     firstCard = clickedCard;
     if (gifs.includes(firstCard.classList[1])) {
       console.log('1111111111111111111')
-      console.log(firstCard)
+      console.log(firstCard.classList[1])
       flipCounter -= 1
       flipCount.textContent = "Flips remaining : " + flipCounter;
       return;
@@ -135,8 +156,9 @@ function handleCardClick(event) {
   } else if (firstCard != clickedCard) {
 
     secondCard = clickedCard;
-    if (gifs.includes(firstCard.classList[1])) {
+    if (gifs.includes(secondCard.classList[1])) {
       console.log('22222222222222222222222')
+      console.log(secondCard.classList[1])
 
       flipCounter -= 1
       flipCount.textContent = "Flips remaining : " + flipCounter
@@ -168,12 +190,12 @@ function compareBothCards() {
         return true
       })
       gifs = array
-      Wincount = 5 - (gifs.length / 2)
+      Wincount = 12 - (gifs.length / 2)
 
       correctPick(firstCard, secondCard)
       count.textContent = "Score: " + Wincount
       resetCards();
-      if (Wincount === 5) {
+      if (Wincount === 12) {
         setTimeout(() => {
           gameSection.style.display = 'none';
           title.style.display = 'none';
