@@ -15,7 +15,7 @@ const lostMsg = document.querySelector('.lostMsg');
 
 let firstCard, secondCard;
 let pairSelected = false;
-let flipCounter = 40;
+let flipCounter = 2;
 let Wincount;
 let COLORS = [
   "red",
@@ -31,11 +31,6 @@ let COLORS = [
 ];
 
 
-
-
-
-
-
 startButton.addEventListener('click', () => {
   startButton.style.display = 'none';
   gameSection.style.display = 'block';
@@ -43,7 +38,7 @@ startButton.addEventListener('click', () => {
 });
 
 
-let array = Array(12).fill(0)
+let array = Array(8).fill(0)
 let gifs = array.map((element, index) => {
   return `${element + index + 1}.gif`;
 })
