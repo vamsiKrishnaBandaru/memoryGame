@@ -70,8 +70,31 @@ button:hover {
   margin-bottom: 5rem;
   margin-top: -3rem;
 }
+
+h4 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 2.8rem;
+  margin-bottom: 2rem;
+}
+.levelSec {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  display: none;
+}
+
+.levelSec button {
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  border-radius: 2rem;
+  font-family: "Open Sans", sans-serif;
+  border: none;
+  outline-style: none;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
 .wrapper {
-  width: 90rem;
+  width: 80%;
   align-self: center;
   display: none;
   padding: 2rem;
@@ -82,7 +105,6 @@ button:hover {
   flex-wrap: wrap;
   align-self: center;
   justify-content: center;
-  padding: 1rem;
 }
 
 #game div {
@@ -90,9 +112,7 @@ button:hover {
 }
 
 .card {
-  width: 4rem;
-  height: 4rem;
-  padding: 5rem;
+  padding: 2rem;
   display: flex;
 }
 
@@ -153,7 +173,7 @@ button:hover {
 }
 
 .lostMsg {
-  font-size: 4.5rem;
+  font-size: 4.2rem;
   text-align: center;
   font-family: "Open Sans", sans-serif;
   display: none;
@@ -271,9 +291,8 @@ button:hover {
     padding: 1rem 1.3rem;
     font-size: 2rem;
   }
-
   .wrapper {
-    width: 70rem;
+    width: auto;
     height: auto;
     align-self: center;
     display: none;

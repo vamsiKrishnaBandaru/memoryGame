@@ -7,14 +7,20 @@ const startButton = document.querySelector('.homePage')
 const count = document.querySelector('.count');
 const flipCount = document.querySelector('.flipCount');
 
+const easy = document.querySelector('.easy');
+const medium = document.querySelector('.medium');
+const hard = document.querySelector('.hard');
+const levelSec = document.querySelector(".levelSec")
+
 
 const successMsg = document.querySelector('.successMsg');
 const lostMsg = document.querySelector('.lostMsg');
 const bestscore = document.querySelector('.bestScrore');
 let firstCard, secondCard;
 let pairSelected = false;
-let flipCounter = 40;
+let flipCounter, cardsCount, initialFlipCount;
 let Wincount = 0;
+let levelName = ''
 
 
 flipCount.textContent = "Flips remaining : " + flipCounter;
@@ -36,31 +42,72 @@ let COLORS = [
 
 
 startButton.addEventListener('click', () => {
+  levelSec.style.display = 'block';
+  levelSec.style.display = 'flex';
   startButton.style.display = 'none';
-  gameSection.style.display = 'block';
-  title.style.display = 'block';
-  homebtn.style.display = 'block';
-  if (localStorage.getItem('bestscore')) {
-    bestscore.textContent = `Best Score: ${localStorage.getItem('bestscore')}`;
-  } else {
-    bestscore.textContent = `Best Score: 0`;
-  }
 });
 
 
+levelSec.addEventListener('click', () => {
+  gameSection.style.display = 'block';
+  title.style.display = 'block';
+  homebtn.style.display = 'block';
+  levelSec.style.display = 'none';
+})
+
+easy.addEventListener('click', () => {
+  flipCounter = 24
+  cardsCount = 4
+  levelName = 'easyBestScore'
+  requiredCards(cardsCount, flipCounter)
+  checkLocalStorageScore(levelName)
+})
+
+medium.addEventListener('click', () => {
+  flipCounter = 40
+  cardsCount = 6
+  levelName = 'mediumBestScore'
+  requiredCards(cardsCount, flipCounter)
+  checkLocalStorageScore(levelName)
+})
+
+hard.addEventListener('click', () => {
+  flipCounter = 60
+  cardsCount = 8
+  levelName = 'hardBestScore'
+  requiredCards(cardsCount, flipCounter)
+  checkLocalStorageScore(levelName)
+})
+
+function checkLocalStorageScore(levelName) {
+  if (localStorage.getItem(levelName)) {
+    bestscore.textContent = `Best Score: ${localStorage.getItem(levelName)}`;
+  } else {
+    levelName.textContent = `Best Score: 0`;
+  }
+}
 // filling the array with gif names
+
+function requiredCards(cardsCount, flipCounter) {
+
+  initialFlipCount = flipCounter
+  flipCount.textContent = `Flips remaining : ${flipCounter}`;
+
+  let array = Array(cardsCount).fill(0)
+  let gifs = array.map((element, index) => {
+    return `${element + index + 1}.gif`;
+  })
+  gifs.push(...gifs);
+  shuffle(gifs)
+}
 
 let array = Array(8).fill(0)
 let gifs = array.map((element, index) => {
   return `${element + index + 1}.gif`;
 })
 
-gifs.push(...gifs);
-
-
 function shuffle(array) {
   let counter = array.length;
-
   // While there are elements in the array
   while (counter > 0) {
     // Pick a random index
@@ -74,10 +121,10 @@ function shuffle(array) {
     array[counter] = array[index];
     array[index] = temp;
   }
-  return array;
+  createDivsForGifs(array);
 }
 
-let shuffledGifs = shuffle(gifs);
+// let shuffledGifs = shuffle(gifs);
 
 function createDivsForGifs(allGifs) {
   for (let gif of allGifs) {
@@ -149,7 +196,7 @@ function handleCardClick(event) {
 
 // when the DOM loads
 
-createDivsForGifs(shuffledGifs);
+// createDivsForGifs(shuffledGifs);
 
 // Check if the two clicked cards match
 
@@ -179,25 +226,26 @@ function compareBothCards() {
         return true
       })
       gifs = array
+      console.log(cardsCount)
       console.log(gifs)
-      Wincount = 8 - (gifs.length / 2)
+      Wincount += 1
 
       correctPick(firstCard, secondCard)
       count.textContent = "Score: " + Wincount
       resetCards();
 
-      if (Wincount === 8) {
+      if (Wincount === cardsCount) {
         setTimeout(() => {
           resultMessage(successMsg)
         }, 1500)
-        showBestScore(flipCounter)
+        showBestScore(levelName, flipCounter, initialFlipCount)
       }
     }
   } else {
     wrongPick(firstCard, secondCard)
   }
 
-  if (flipCounter === 0 && Wincount != 8) {
+  if (flipCounter === 0 && Wincount != cardsCount) {
     setTimeout(() => {
       resultMessage(lostMsg)
     }, 1200)
@@ -242,23 +290,24 @@ function wrongPick(card1, card2) {
 
 // storing the best score using local Storage 
 
-function showBestScore(score) {
+function showBestScore(levelName, flipCounter, initialFlipCount) {
 
-  if (localStorage.getItem('bestscore')) {
+  let actualScore = initialFlipCount - flipCounter;
 
-    let presentScore = localStorage.getItem('bestscore');
+  if (localStorage.getItem(levelName)) {
+
+    let presentScore = localStorage.getItem(levelName);
     if (presentScore !== "undefined") {
-      bestscore.textContent = `Best Score: ${50 - score}`
+      bestscore.textContent = `Best Score: ${actualScore}`
       bestscore.style.visibility = "visible";
     }
 
-    if (presentScore === "undefined" || Number(presentScore) > (50 - score)) {
-      localStorage.setItem('bestscore', 50 - score);
-      bestscore.textContent = `Best Score: ${50 - score}`
+    if (presentScore === "undefined" || Number(presentScore) > (actualScore)) {
+      localStorage.setItem(levelName, actualScore);
+      bestscore.textContent = `Best Score: ${actualScore}`
     }
-
   } else {
-    localStorage.setItem('bestscore', 50 - score);
+    localStorage.setItem(levelName, actualScore);
   }
 }
 
