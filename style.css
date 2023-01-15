@@ -95,7 +95,6 @@ h4 {
 }
 
 .wrapper {
-  width: 95%;
   align-self: center;
   display: none;
   padding: 1rem;
@@ -280,8 +279,9 @@ h4 {
     gap: 10rem;
   }
   header {
-    margin: 0;
+    margin-top: 3rem;
   }
+
   h2 {
     font-size: 3rem;
     text-align: center;
@@ -300,12 +300,15 @@ h4 {
     height: auto;
     align-self: center;
     display: none;
-    margin-left: 7rem;
+    margin: 0;
+    margin-left: 4rem;
   }
 
   .title {
     margin: 0;
     font-size: 3rem;
+    margin-bottom: 7rem;
+    margin-top: -5rem;
   }
   .card {
     width: auto;
