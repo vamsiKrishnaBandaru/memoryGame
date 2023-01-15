@@ -31,19 +31,28 @@ let COLORS = [
   "purple"
 ];
 
+
+const array = Array(12).fill(0)
+const gifs = array.map((element, index) => {
+  return `${element + index + 1}.gif`;
+})
+
+gifs.push(...gifs);
+
+
+startButton.style.display = 'none';
+gameSection.style.display = 'block';
+title.style.display = 'block';
 startButton.addEventListener('click', () => {
-  startButton.style.display = 'none';
-  // gameSection.style.display = 'block';
-  // title.style.display = 'block';
-  levelSec.style.display = 'block';
-  levelSec.style.display = 'flex';
+  // levelSec.style.display = 'block';
+  // levelSec.style.display = 'flex';
 });
 
-medium.addEventListener('click', () => {
-  gameSection.style.display = 'block';
-  title.style.display = 'block';
-  levelSec.style.display = 'none';
-})
+// medium.addEventListener('click', () => {
+//   gameSection.style.display = 'block';
+//   title.style.display = 'block';
+//   levelSec.style.display = 'none';
+// })
 
 // here is a helper function to shuffle an array
 // it returns the same array with values shuffled
@@ -68,15 +77,28 @@ function shuffle(array) {
   return array;
 }
 
-let shuffledColors = shuffle(COLORS);
+let shuffledGifs = shuffle(gifs);
 
-function createDivsForColors(colorArray) {
-  for (let color of colorArray) {
+function createDivsForGifs(allGifs) {
+  for (let gif of allGifs) {
 
     const newDiv = document.createElement("div");
+    const frontFace = document.createElement("div");
+    const backFace = document.createElement("div");
 
-    newDiv.classList.add("card", color);
-    newDiv.classList.add("backgroundImg")
+
+    newDiv.classList.add("card", gif);
+
+    frontFace.classList.add("frontface");
+    backFace.classList.add("backface");
+
+    frontFace.style.background = `url(./images/frontface.png) no-repeat`
+    frontFace.style.backgroundSize = 'cover'
+
+    backFace.style.background = `url(./gifs/${gif}) no-repeat`
+    backFace.style.backgroundSize = 'cover'
+
+    newDiv.append(frontFace, backFace);
     console.log(newDiv)
 
     newDiv.addEventListener("click", handleCardClick);
@@ -92,14 +114,16 @@ function handleCardClick(event) {
     // resetCards()
     return;
   }
-
+  // firstCard.classList[1]
   const clickedCard = event.target;
-  clickedCard.style.backgroundColor = event.target.className
-  clickedCard.classList.remove('backgroundImg')
+  if (clickedCard.className === "frontface") {
+    clickedCard.style.display = "none";
+    clickedCard.nextElementSibling.style.display = "block";
+  }
 
   if (!firstCard) {
     firstCard = clickedCard;
-    if (COLORS.includes(firstCard.classList[1])) {
+    if (gifs.includes(firstCard.classList[1])) {
 
       flipCounter -= 1
       flipCount.textContent = "Flips remaining : " + flipCounter
@@ -112,7 +136,7 @@ function handleCardClick(event) {
   } else if (firstCard != clickedCard) {
 
     secondCard = clickedCard;
-    if (COLORS.includes(secondCard.classList[1])) {
+    if (gifs.includes(secondCard.classList[1])) {
 
       flipCounter -= 1
       flipCount.textContent = "Flips remaining : " + flipCounter
@@ -127,7 +151,7 @@ function handleCardClick(event) {
 }
 
 // when the DOM loads
-createDivsForColors(shuffledColors);
+createDivsForGifs(shuffledGifs);
 
 // Check if the two clicked cards match
 
@@ -135,17 +159,17 @@ function compareBothCards() {
 
   if (firstCard.classList[1] === secondCard.classList[1]) {
 
-    if (COLORS.includes(firstCard.classList[1])) {
+    if (gifs.includes(firstCard.classList[1])) {
 
-      let array = COLORS.filter((element) => {
+      let array = gifs.filter((element) => {
 
         if (element === firstCard.classList[1]) {
           return false
         }
         return true
       })
-      COLORS = array
-      Wincount = 5 - (COLORS.length / 2)
+      gifs = array
+      Wincount = 5 - (gifs.length / 2)
 
       correctPick(firstCard, secondCard)
       count.textContent = "Score: " + Wincount
@@ -190,8 +214,8 @@ function wrongPick(card1, card2) {
   card2.classList.add('wrong-pick');
   setTimeout(() => {
 
-    card1.classList.add('backgroundImg', 'wrong-pick');
-    card2.classList.add('backgroundImg', 'wrong-pick');
+    card1.classList.add('src', 'wrong-pick');
+    card2.classList.add('src', 'wrong-pick');
 
     card1.classList.remove('wrong-pick');
     card2.classList.remove('wrong-pick');

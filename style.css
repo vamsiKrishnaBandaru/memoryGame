@@ -51,7 +51,7 @@ h2 {
 
 .levelSec button {
   padding: 1rem 2rem;
-  font-size: 2rem;
+  font-size: 1.7rem;
   border-radius: 2rem;
   font-family: "Open Sans", sans-serif;
   border: none;
@@ -69,7 +69,7 @@ button:hover {
   margin-top: 3rem;
 }
 .wrapper {
-  width: 75.8rem;
+  /* width: 75.8rem; */
   align-self: center;
   display: none;
   margin-top: 1rem;
@@ -82,7 +82,7 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   align-self: center;
-  gap: 2rem;
+  gap: 1rem;
   justify-content: center;
   padding: 3rem;
 }
@@ -95,16 +95,28 @@ button:hover {
   width: 4rem;
   height: 4rem;
   padding: 5rem;
+  display: flex;
 }
 .card:hover {
   transform: scale(1.03);
   cursor: pointer;
 }
 
-.backgroundImg {
+.frontface {
   background: url("images/frontface.png") no-repeat;
   background-size: cover;
   background-position-x: center;
+  /* width: 3rem;
+  height: 6rem; */
+  padding: 3rem;
+  /* display: none; */
+}
+
+.backface {
+  /* width: 3rem;
+  height: 6rem; */
+  padding: 3rem;
+  display: none;
 }
 
 .correct-pick {
