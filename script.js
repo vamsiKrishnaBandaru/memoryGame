@@ -10,11 +10,13 @@ const flipCount = document.querySelector('.flipCount');
 
 const successMsg = document.querySelector('.successMsg');
 const lostMsg = document.querySelector('.lostMsg');
-
+const bestscore = document.querySelector('.bestScrore');
 let firstCard, secondCard;
 let pairSelected = false;
 let flipCounter = 40;
 let Wincount = 0;
+
+
 flipCount.textContent = "Flips remaining : " + flipCounter;
 count.textContent = "Score: " + Wincount
 
@@ -38,8 +40,15 @@ startButton.addEventListener('click', () => {
   gameSection.style.display = 'block';
   title.style.display = 'block';
   homebtn.style.display = 'block';
+  if (localStorage.getItem('bestscore')) {
+    bestscore.textContent = `Best Score: ${localStorage.getItem('bestscore')}`;
+  } else {
+    bestscore.textContent = `Best Score: 0`;
+  }
 });
 
+
+// filling the array with gif names
 
 let array = Array(8).fill(0)
 let gifs = array.map((element, index) => {
@@ -139,9 +148,22 @@ function handleCardClick(event) {
 }
 
 // when the DOM loads
+
 createDivsForGifs(shuffledGifs);
 
 // Check if the two clicked cards match
+
+// result messages after finishing game
+
+function resultMessage(msg) {
+  gameSection.style.display = 'none';
+  title.style.display = 'none';
+  homebtn.style.display = 'none';
+  msg.style.display = 'block';
+}
+
+
+// comparing both cards if success the card will be removed from the main array
 
 function compareBothCards() {
 
@@ -157,15 +179,18 @@ function compareBothCards() {
         return true
       })
       gifs = array
+      console.log(gifs)
       Wincount = 8 - (gifs.length / 2)
 
       correctPick(firstCard, secondCard)
       count.textContent = "Score: " + Wincount
       resetCards();
+
       if (Wincount === 8) {
         setTimeout(() => {
           resultMessage(successMsg)
         }, 1400)
+        showBestScore(flipCounter)
       }
     }
   } else {
@@ -175,16 +200,11 @@ function compareBothCards() {
   if (flipCounter === 0 && Wincount != 8) {
     setTimeout(() => {
       resultMessage(lostMsg)
-    }, 1000)
+    }, 1200)
   }
 }
 
-function resultMessage(msg) {
-  gameSection.style.display = 'none';
-  title.style.display = 'none';
-  homebtn.style.display = 'none';
-  msg.style.display = 'block';
-}
+// when the pairs are matched adding Animation and remove using setTimeout
 
 function correctPick(card1, card2) {
 
@@ -194,9 +214,12 @@ function correctPick(card1, card2) {
 
     card1.classList.remove('correct-pick');
     card2.classList.remove('correct-pick');
-  }, 1000);
+  }, 1400);
   resetCards();
 }
+
+
+// when the pairs are mismatched adding Animation and remove using setTimeout
 
 function wrongPick(card1, card2) {
 
@@ -212,9 +235,34 @@ function wrongPick(card1, card2) {
 
     card1.classList.remove('wrong-pick');
     card2.classList.remove('wrong-pick');
-  }, 1200);
+  }, 1400);
   resetCards();
 }
+
+
+// storing the best score using local Storage 
+
+function showBestScore(score) {
+
+  if (localStorage.getItem('bestscore')) {
+
+    let presentScore = localStorage.getItem('bestscore');
+    if (presentScore !== "undefined") {
+      bestscore.textContent = `Best Score: ${40 - score}`
+      bestscore.style.visibility = "visible";
+    }
+
+    if (presentScore === "undefined" || Number(presentScore) > (40 - score)) {
+      localStorage.setItem('bestscore', 40 - score);
+      bestscore.textContent = `Best Score: ${40 - score}`
+    }
+
+  } else {
+    localStorage.setItem('bestscore', 40 - score);
+  }
+}
+
+// resetCards when user selects two cards
 
 function resetCards() {
   firstCard = null;
