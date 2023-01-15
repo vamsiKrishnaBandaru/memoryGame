@@ -26,13 +26,27 @@ h2 {
   text-align: center;
 }
 
+header {
+  float: right;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: -4rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  display: none;
+}
+
 .homePage {
   display: flex;
   flex-direction: column;
   gap: 7rem;
 }
+
 .homePage button,
-.lostMsg button {
+.lostMsg button,
+header button,
+.successMsg button {
   align-self: center;
   border: none;
   outline-style: none;
@@ -41,7 +55,10 @@ h2 {
   border-radius: 2rem;
   font-family: "Open Sans", sans-serif;
 }
-
+header button {
+  font-size: 1rem;
+  padding: 0.7rem 1rem;
+}
 button:hover {
   transform: scale(1.03);
   cursor: pointer;
@@ -124,18 +141,19 @@ button:hover {
 }
 
 .successMsg h5 {
-  font-size: 6rem;
+  font-size: 4.2rem;
   font-family: "Open Sans", sans-serif;
 }
+
 .successMsg p {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   font-weight: 400;
   padding: 4.5rem;
   font-family: "Public Sans", sans-serif;
 }
 
 .lostMsg {
-  font-size: 4rem;
+  font-size: 4.5rem;
   text-align: center;
   font-family: "Open Sans", sans-serif;
   display: none;
@@ -148,10 +166,12 @@ button:hover {
   font-family: "Public Sans", sans-serif;
 }
 
-.lostMsg button {
+.lostMsg button,
+.successMsg button {
   margin-top: 1.5rem;
 }
-.lostMsgbtn a {
+.lostMsgbtn a,
+.homebtn a {
   text-decoration: none;
   color: black;
   font-weight: 500;
@@ -235,6 +255,9 @@ button:hover {
     width: auto;
     gap: 10rem;
   }
+  header {
+    margin: 0;
+  }
   h2 {
     font-size: 4rem;
     text-align: center;
@@ -242,7 +265,9 @@ button:hover {
     width: 95%;
   }
   .homePage button,
-  .lostMsg button {
+  .lostMsg button,
+  header button,
+  successMsg button {
     padding: 1rem 1.3rem;
     font-size: 2.3rem;
   }

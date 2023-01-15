@@ -1,14 +1,12 @@
 const gameContainer = document.getElementById("game");
 const gameSection = document.querySelector(".wrapper");
 const title = document.querySelector(".title");
+const homebtn = document.querySelector('.homebtn');
+
 const startButton = document.querySelector('.homePage')
-const levelSec = document.querySelector(".levelSec")
 const count = document.querySelector('.count');
 const flipCount = document.querySelector('.flipCount');
-const loader = document.querySelector('.loader');
-const easy = document.querySelector('.easy');
-const medium = document.querySelector('.medium');
-const hard = document.querySelector('.hard');
+
 
 const successMsg = document.querySelector('.successMsg');
 const lostMsg = document.querySelector('.lostMsg');
@@ -16,7 +14,11 @@ const lostMsg = document.querySelector('.lostMsg');
 let firstCard, secondCard;
 let pairSelected = false;
 let flipCounter = 40;
-let Wincount;
+let Wincount = 0;
+flipCount.textContent = "Flips remaining : " + flipCounter;
+count.textContent = "Score: " + Wincount
+
+
 let COLORS = [
   "red",
   "blue",
@@ -35,6 +37,7 @@ startButton.addEventListener('click', () => {
   startButton.style.display = 'none';
   gameSection.style.display = 'block';
   title.style.display = 'block';
+  homebtn.style.display = 'block';
 });
 
 
@@ -154,32 +157,34 @@ function compareBothCards() {
         return true
       })
       gifs = array
-      Wincount = 12 - (gifs.length / 2)
+      Wincount = 8 - (gifs.length / 2)
 
       correctPick(firstCard, secondCard)
       count.textContent = "Score: " + Wincount
       resetCards();
-      if (Wincount === 12) {
+      if (Wincount === 8) {
         setTimeout(() => {
-          gameSection.style.display = 'none';
-          title.style.display = 'none';
-          successMsg.style.display = 'block';
-        }, 1000)
+          resultMessage(successMsg)
+        }, 1400)
       }
     }
   } else {
     wrongPick(firstCard, secondCard)
   }
 
-  if (flipCounter === 0 && Wincount != 12) {
+  if (flipCounter === 0 && Wincount != 8) {
     setTimeout(() => {
-      gameSection.style.display = 'none';
-      title.style.display = 'none';
-      lostMsg.style.display = 'block';
+      resultMessage(lostMsg)
     }, 1000)
   }
 }
 
+function resultMessage(msg) {
+  gameSection.style.display = 'none';
+  title.style.display = 'none';
+  homebtn.style.display = 'none';
+  msg.style.display = 'block';
+}
 
 function correctPick(card1, card2) {
 
@@ -190,7 +195,7 @@ function correctPick(card1, card2) {
     card1.classList.remove('correct-pick');
     card2.classList.remove('correct-pick');
     resetCards();
-  }, 500);
+  }, 1000);
 }
 
 function wrongPick(card1, card2) {
