@@ -189,7 +189,7 @@ function compareBothCards() {
       if (Wincount === 8) {
         setTimeout(() => {
           resultMessage(successMsg)
-        }, 1400)
+        }, 1500)
         showBestScore(flipCounter)
       }
     }
@@ -214,7 +214,7 @@ function correctPick(card1, card2) {
 
     card1.classList.remove('correct-pick');
     card2.classList.remove('correct-pick');
-  }, 1400);
+  }, 1000);
   resetCards();
 }
 
@@ -235,7 +235,7 @@ function wrongPick(card1, card2) {
 
     card1.classList.remove('wrong-pick');
     card2.classList.remove('wrong-pick');
-  }, 1400);
+  }, 1500);
   resetCards();
 }
 
@@ -248,17 +248,17 @@ function showBestScore(score) {
 
     let presentScore = localStorage.getItem('bestscore');
     if (presentScore !== "undefined") {
-      bestscore.textContent = `Best Score: ${40 - score}`
+      bestscore.textContent = `Best Score: ${50 - score}`
       bestscore.style.visibility = "visible";
     }
 
-    if (presentScore === "undefined" || Number(presentScore) > (40 - score)) {
-      localStorage.setItem('bestscore', 40 - score);
-      bestscore.textContent = `Best Score: ${40 - score}`
+    if (presentScore === "undefined" || Number(presentScore) > (50 - score)) {
+      localStorage.setItem('bestscore', 50 - score);
+      bestscore.textContent = `Best Score: ${50 - score}`
     }
 
   } else {
-    localStorage.setItem('bestscore', 40 - score);
+    localStorage.setItem('bestscore', 50 - score);
   }
 }
 
