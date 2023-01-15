@@ -42,22 +42,6 @@ h2 {
   font-family: "Open Sans", sans-serif;
 }
 
-.levelSec {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  display: none;
-}
-
-.levelSec button {
-  padding: 1rem 2rem;
-  font-size: 1.7rem;
-  border-radius: 2rem;
-  font-family: "Open Sans", sans-serif;
-  border: none;
-  outline-style: none;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-}
 button:hover {
   transform: scale(1.03);
   cursor: pointer;

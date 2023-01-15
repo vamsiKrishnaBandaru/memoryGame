@@ -5,7 +5,7 @@ const startButton = document.querySelector('.homePage')
 const levelSec = document.querySelector(".levelSec")
 const count = document.querySelector('.count');
 const flipCount = document.querySelector('.flipCount');
-
+const loader = document.querySelector('.loader');
 const easy = document.querySelector('.easy');
 const medium = document.querySelector('.medium');
 const hard = document.querySelector('.hard');
@@ -34,41 +34,13 @@ let COLORS = [
 
 
 
-// startButton.style.display = 'none';
-// gameSection.style.display = 'block';
-// title.style.display = 'block';
 
-startButton.addEventListener('click', () => {
-  levelSec.style.display = 'block';
-  levelSec.style.display = 'flex';
-});
 
 startButton.addEventListener('click', () => {
   startButton.style.display = 'none';
-  // gameSection.style.display = 'block';
-  // title.style.display = 'block';
-  levelSec.style.display = 'block';
-  levelSec.style.display = 'flex';
-});
-
-levelSec.addEventListener('click', () => {
   gameSection.style.display = 'block';
   title.style.display = 'block';
-  levelSec.style.display = 'none';
-})
-
-// easy.addEventListener('click', () => {
-//   cardsCount = 6;
-// })
-
-// medium.addEventListener('click', () => {
-//   cardsCount = 8;
-// })
-
-// hard.addEventListener('click', () => {
-//   cardsCount = 12;
-// })
-
+});
 
 
 let array = Array(12).fill(0)
@@ -134,7 +106,7 @@ function handleCardClick(event) {
     // resetCards()
     return;
   }
-  // firstCard.classList[1]
+
   const clickedCard = event.target.parentElement;
   if (event.target.className == "frontface") {
     event.target.style.display = 'none';
@@ -144,8 +116,7 @@ function handleCardClick(event) {
   if (!firstCard) {
     firstCard = clickedCard;
     if (gifs.includes(firstCard.classList[1])) {
-      console.log('1111111111111111111')
-      console.log(firstCard.classList[1])
+
       flipCounter -= 1
       flipCount.textContent = "Flips remaining : " + flipCounter;
       return;
@@ -157,8 +128,6 @@ function handleCardClick(event) {
 
     secondCard = clickedCard;
     if (gifs.includes(secondCard.classList[1])) {
-      console.log('22222222222222222222222')
-      console.log(secondCard.classList[1])
 
       flipCounter -= 1
       flipCount.textContent = "Flips remaining : " + flipCounter
@@ -207,7 +176,7 @@ function compareBothCards() {
     wrongPick(firstCard, secondCard)
   }
 
-  if (flipCounter === 0 && Wincount != 5) {
+  if (flipCounter === 0 && Wincount != 12) {
     setTimeout(() => {
       gameSection.style.display = 'none';
       title.style.display = 'none';
