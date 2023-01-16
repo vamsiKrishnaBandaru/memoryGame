@@ -128,10 +128,14 @@ function shuffle(array) {
 
 function createDivsForGifs(allGifs) {
   for (let gif of allGifs) {
-
     const newDiv = document.createElement("div");
     const frontFace = document.createElement("div");
     const backFace = document.createElement("div");
+    const backFaceImg = document.createElement("img");
+    backFaceImg.setAttribute("src", `./gifs/${gif}`)
+
+    backFaceImg.style.backgroundSize = "cover";
+    backFace.appendChild(backFaceImg)
 
     newDiv.classList.add("card", gif);
 
@@ -139,10 +143,12 @@ function createDivsForGifs(allGifs) {
     backFace.classList.add("backface");
 
     frontFace.style.background = `url(./images/frontface.png) no-repeat`
-    frontFace.style.backgroundSize = 'cover'
 
-    backFace.style.background = `url(./gifs/${gif}) no-repeat`
-    backFace.style.backgroundSize = 'cover'
+    frontFace.style.backgroundSize = 'cover'
+    // backFace.style.display = "none";
+
+    // backFace.style.background = `url(./gifs/${gif}) no-repeat`
+    // backFace.style.backgroundSize = 'cover'
 
     newDiv.append(frontFace, backFace);
     console.log(newDiv)
@@ -163,9 +169,10 @@ function handleCardClick(event) {
   }
 
   const clickedCard = event.target.parentElement;
+  
   if (event.target.className == "frontface") {
     event.target.style.display = 'none';
-    event.target.nextElementSibling.style.display = "block";
+    clickedCard.children[1].style.display = "block";
   }
 
   if (!firstCard) {
@@ -217,8 +224,6 @@ function compareBothCards() {
         return true
       })
       gifs = array
-      console.log(cardsCount)
-      console.log(gifs)
       Wincount += 1
 
       correctPick(firstCard, secondCard)

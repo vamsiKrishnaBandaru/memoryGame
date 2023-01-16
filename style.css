@@ -126,18 +126,20 @@ h4 {
   background: url("images/frontface.png") no-repeat;
   background-size: cover;
   background-position-x: center;
-  /* width: 3rem;
-  height: 6rem; */
   object-fit: cover;
-  padding: 3.2rem;
-  /* display: none; */
+  width: 8rem;
+  height: 8rem;
+  border-radius: 4rem;
 }
 
 .backface {
-  /* width: 3rem;
-  height: 6rem; */
-  padding: 3.2rem;
   display: none;
+}
+.backface img {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 4rem;
+  object-fit: cover;
 }
 
 .correct-pick {
