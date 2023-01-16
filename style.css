@@ -17,6 +17,7 @@ body {
   align-content: center;
   flex-direction: column;
   font-family: "Press Start 2P", cursive;
+  height: 100vh;
   gap: 8rem;
 }
 
