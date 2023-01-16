@@ -81,9 +81,9 @@ hard.addEventListener('click', () => {
 
 function checkLocalStorageScore(levelName) {
   if (localStorage.getItem(levelName)) {
-    bestscore.textContent = `Best: ${localStorage.getItem(levelName)}`;
+    bestscore.textContent = `Best: ${localStorage.getItem(levelName)}` + " Flips";
   } else {
-    levelName.textContent = `Best: 0`;
+    levelName.textContent = `Best: 0 Flips`;
   }
 }
 // filling the array with gif names
