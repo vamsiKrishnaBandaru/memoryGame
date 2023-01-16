@@ -281,7 +281,6 @@ h4 {
 
 @media (max-width: 1200px) {
   body {
-    height: auto;
     width: auto;
     gap: 2rem;
   }
