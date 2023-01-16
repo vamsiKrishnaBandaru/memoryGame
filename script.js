@@ -79,6 +79,7 @@ hard.addEventListener('click', () => {
   checkLocalStorageScore(levelName)
 })
 
+
 function checkLocalStorageScore(levelName) {
   if (localStorage.getItem(levelName)) {
     bestscore.textContent = `Best: ${localStorage.getItem(levelName)}` + " Flips";
@@ -169,7 +170,7 @@ function handleCardClick(event) {
   }
 
   const clickedCard = event.target.parentElement;
-  
+
   if (event.target.className == "frontface") {
     event.target.style.display = 'none';
     clickedCard.children[1].style.display = "block";
@@ -201,7 +202,6 @@ function handleCardClick(event) {
     }
   }
 }
-
 
 
 // Check if the two clicked cards match
