@@ -17,8 +17,7 @@ body {
   align-content: center;
   flex-direction: column;
   font-family: "Press Start 2P", cursive;
-  min-height: 100vh;
-  gap: 3rem;
+  gap: 8rem;
 }
 
 h2 {
@@ -281,7 +280,7 @@ h4 {
   body {
     height: auto;
     width: auto;
-    gap: 10rem;
+    gap: 2rem;
   }
   header {
     margin-top: 3rem;
@@ -302,7 +301,6 @@ h4 {
   }
   .wrapper {
     width: auto;
-    height: auto;
     align-self: center;
     display: none;
     margin: 0;
@@ -312,8 +310,8 @@ h4 {
   .title {
     margin: 0;
     font-size: 3rem;
-    margin-bottom: 7rem;
-    margin-top: -5rem;
+    margin-bottom: 5rem;
+    margin-top: 0rem;
   }
   .card {
     width: auto;
