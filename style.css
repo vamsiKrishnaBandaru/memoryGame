@@ -1,14 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Press+Start+2P&family=Public+Sans:wght@300&display=swap");
 
 * {
-  padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
 body {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
+  background-size: 350% 350%;
   animation: gradient 15s ease infinite;
   color: #eee;
   display: flex;
@@ -17,7 +16,8 @@ body {
   align-content: center;
   flex-direction: column;
   font-family: "Press Start 2P", cursive;
-  gap: 8rem;
+  height: 100vh;
+  gap: 4rem;
 }
 
 h2 {
@@ -29,8 +29,10 @@ header {
   display: flex;
   justify-content: flex-start;
   width: 90%;
-  /* border: 1px solid #fff; */
   padding: 2rem;
+}
+.homebtn {
+  display: none;
 }
 
 .homePage {
@@ -67,7 +69,6 @@ button:focus {
 }
 
 .levelSec h4 {
-  /* font-family: "Open Sans", sans-serif; */
   font-size: 2.8rem;
   margin-bottom: 2rem;
 }
@@ -86,18 +87,16 @@ button:focus {
 
 .wrapper {
   display: none;
-  padding: 1rem;
+  height: 100%;
   flex-direction: column;
-  /* border:1px solid #fff; */
+  justify-content: center;
 }
 
 #game {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* gap: 1.5rem; */
   align-self: center;
-  /* border: 1px solid #fff; */
 }
 
 #game div {
@@ -107,15 +106,16 @@ button:focus {
 /* cards section */
 
 .card {
-  padding: 1.3rem;
+  padding: 1rem;
   display: flex;
-  /* border: 1px solid #fff; */
-  flex-basis: 25%;
   justify-content: center;
 }
 
 .mediumFlexBasis {
-  flex-basis: 13rem;
+  flex-basis: 18rem;
+}
+.hardFlexBasis {
+  flex-basis: 25rem;
 }
 
 .card:hover {
@@ -157,7 +157,6 @@ button:focus {
   align-items: center;
   justify-content: space-between;
   padding: 4rem;
-  margin-top: 2rem;
   font-family: "Open Sans", sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
@@ -275,16 +274,12 @@ button:focus {
 
 /* media queries section */
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   body {
     width: 100%;
-    gap: 2rem;
-    height: auto;
-  }
-
-  header {
-    /* margin: 0;
-    padding: 0; */
+    gap: 0;
+    margin: 0;
+    padding: 0;
   }
 
   h2 {
@@ -305,7 +300,9 @@ button:focus {
     align-self: center;
     display: none;
     margin: 0;
+    height: 92%;
   }
+
   .card {
     flex-basis: 25%;
     justify-content: center;
@@ -314,8 +311,6 @@ button:focus {
   .title {
     margin: 0;
     font-size: 3rem;
-    margin-bottom: 5rem;
-    margin-top: 0rem;
   }
   .card {
     width: auto;
@@ -340,3 +335,12 @@ button:focus {
     font-size: 3rem;
   }
 }
+
+@media (max-width: 700px) {
+}
+
+/* @media only screen and (min-width: 300px) {
+  .wrapper {
+    height: auto;
+  }
+} */

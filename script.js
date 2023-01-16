@@ -45,6 +45,7 @@ startButton.addEventListener('click', () => {
   levelSec.style.display = 'block';
   levelSec.style.display = 'flex';
   startButton.style.display = 'none';
+  homebtn.style.display = 'block';
 });
 
 
@@ -52,7 +53,6 @@ levelSec.addEventListener('click', () => {
   gameSection.style.display = 'block';
   gameSection.style.display = 'flex';
   title.style.display = 'block';
-  homebtn.style.display = 'block';
   levelSec.style.display = 'none';
 })
 
@@ -141,20 +141,14 @@ function createDivsForGifs(allGifs) {
 
     newDiv.classList.add("card", gif);
 
-    if (levelName == "mediumBestScore") {
-      newDiv.classList.add("mediumFlexBasis")
-    }
-
     frontFace.classList.add("frontface");
     backFace.classList.add("backface");
 
     frontFace.style.background = `url(./images/frontface.png) no-repeat`
 
     frontFace.style.backgroundSize = 'cover'
-    // backFace.style.display = "none";
 
-    // backFace.style.background = `url(./gifs/${gif}) no-repeat`
-    // backFace.style.backgroundSize = 'cover'
+
 
     newDiv.append(frontFace, backFace);
     console.log(newDiv)
@@ -162,6 +156,12 @@ function createDivsForGifs(allGifs) {
     newDiv.addEventListener("click", handleCardClick);
 
     gameContainer.append(newDiv);
+    
+    if (levelName == "mediumBestScore") {
+      newDiv.classList.add("mediumFlexBasis")
+    } else if (levelName == "hardBestScore") {
+      newDiv.classList.add("hardFlexBasis")
+    }
   }
 }
 
@@ -236,9 +236,7 @@ function compareBothCards() {
       resetCards();
 
       if (Wincount === cardsCount) {
-        setTimeout(() => {
-          resultMessage(successMsg)
-        }, 1500)
+        resultMessage(successMsg)
         showBestScore(levelName, flipCounter, initialFlipCount)
       }
     }
@@ -247,9 +245,7 @@ function compareBothCards() {
   }
 
   if (flipCounter === 0 && Wincount != cardsCount) {
-    setTimeout(() => {
-      resultMessage(lostMsg)
-    }, 1200)
+    resultMessage(lostMsg)
   }
 }
 
