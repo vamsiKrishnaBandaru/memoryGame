@@ -17,7 +17,6 @@ body {
   align-content: center;
   flex-direction: column;
   font-family: "Press Start 2P", cursive;
-  height: 100vh;
   gap: 8rem;
 }
 
@@ -27,13 +26,11 @@ h2 {
 }
 
 header {
-  float: right;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   width: 90%;
-  margin-bottom: 3rem;
+  /* border: 1px solid #fff; */
   padding: 2rem;
-  display: none;
 }
 
 .homePage {
@@ -45,7 +42,8 @@ header {
 .homePage button,
 .lostMsg button,
 header button,
-.successMsg button {
+.successMsg button,
+.levelSec button {
   align-self: center;
   border: none;
   outline-style: none;
@@ -54,10 +52,7 @@ header button,
   border-radius: 2rem;
   font-family: "Open Sans", sans-serif;
 }
-header button {
-  font-size: 1rem;
-  padding: 0.7rem 1rem;
-}
+
 button:hover {
   transform: scale(1.03);
   cursor: pointer;
@@ -69,15 +64,14 @@ button:focus {
   display: none;
   text-align: center;
   font-size: 2rem;
-  margin-bottom: 5rem;
-  margin-top: -3rem;
 }
 
-h4 {
-  font-family: "Open Sans", sans-serif;
+.levelSec h4 {
+  /* font-family: "Open Sans", sans-serif; */
   font-size: 2.8rem;
   margin-bottom: 2rem;
 }
+
 .levelSec {
   display: flex;
   flex-direction: column;
@@ -86,29 +80,24 @@ h4 {
 }
 
 .levelSec button {
+  font-size: 1.3rem;
   padding: 1rem 2rem;
-  font-size: 1.4rem;
-  border-radius: 2rem;
-  font-family: "Open Sans", sans-serif;
-  border: none;
-  outline-style: none;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .wrapper {
-  align-self: center;
   display: none;
   padding: 1rem;
-  margin-right: -3rem;
-  width: 95%;
+  flex-direction: column;
+  /* border:1px solid #fff; */
 }
 
 #game {
   display: flex;
   flex-wrap: wrap;
-  align-self: center;
   justify-content: center;
-  gap: 1.5rem;
+  /* gap: 1.5rem; */
+  align-self: center;
+  /* border: 1px solid #fff; */
 }
 
 #game div {
@@ -120,6 +109,13 @@ h4 {
 .card {
   padding: 1.3rem;
   display: flex;
+  /* border: 1px solid #fff; */
+  flex-basis: 25%;
+  justify-content: center;
+}
+
+.mediumFlexBasis {
+  flex-basis: 13rem;
 }
 
 .card:hover {
@@ -281,11 +277,14 @@ h4 {
 
 @media (max-width: 1200px) {
   body {
-    width: auto;
+    width: 100%;
     gap: 2rem;
+    height: auto;
   }
+
   header {
-    margin-top: 3rem;
+    /* margin: 0;
+    padding: 0; */
   }
 
   h2 {
@@ -298,15 +297,18 @@ h4 {
   .lostMsg button,
   header button,
   successMsg button {
-    padding: 1rem 1.3rem;
-    font-size: 2rem;
+    padding: 0.8rem 1.3rem;
+    font-size: 1.5rem;
   }
   .wrapper {
     width: auto;
     align-self: center;
     display: none;
     margin: 0;
-    margin-left: 4rem;
+  }
+  .card {
+    flex-basis: 25%;
+    justify-content: center;
   }
 
   .title {

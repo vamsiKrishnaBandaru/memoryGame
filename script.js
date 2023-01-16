@@ -50,6 +50,7 @@ startButton.addEventListener('click', () => {
 
 levelSec.addEventListener('click', () => {
   gameSection.style.display = 'block';
+  gameSection.style.display = 'flex';
   title.style.display = 'block';
   homebtn.style.display = 'block';
   levelSec.style.display = 'none';
@@ -139,6 +140,10 @@ function createDivsForGifs(allGifs) {
     backFace.appendChild(backFaceImg)
 
     newDiv.classList.add("card", gif);
+
+    if (levelName == "mediumBestScore") {
+      newDiv.classList.add("mediumFlexBasis")
+    }
 
     frontFace.classList.add("frontface");
     backFace.classList.add("backface");
