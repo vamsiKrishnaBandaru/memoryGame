@@ -165,45 +165,29 @@ button:focus {
 
 /* after match ends messages section */
 
-.successMsg {
+.successMsg,
+.lostMsg {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  gap: 10rem;
   display: none;
+  margin-top: 50%;
+  height: 80vh;
 }
 
-.successMsg h5 {
+.successMsg h5,
+.lostMsg h5 {
   font-size: 4.2rem;
-  font-family: "Open Sans", sans-serif;
 }
 
-.successMsg p {
+.successMsg p,
+.lostMsg p {
   font-size: 2.3rem;
   font-weight: 400;
-  padding: 4.5rem;
-  font-family: "Public Sans", sans-serif;
+  padding: 4.5rem 0;
 }
 
-.lostMsg {
-  font-size: 4.2rem;
-  text-align: center;
-  font-family: "Open Sans", sans-serif;
-  display: none;
-}
-
-.lostMsg p {
-  font-size: 2rem;
-  font-weight: 400;
-  margin-top: 3rem;
-  font-family: "Public Sans", sans-serif;
-}
-
-.lostMsg button,
-.successMsg button {
-  margin-top: 1.5rem;
-}
 .lostMsgbtn a,
 .homebtn a {
   text-decoration: none;
@@ -285,7 +269,6 @@ button:focus {
 }
 
 @media (max-width: 1280px) {
-
   body {
     width: 100%;
     gap: 1rem;
@@ -330,15 +313,12 @@ button:focus {
     font-size: 1.5rem;
   }
 
-  .lostMsg p {
-    font-size: 1.8rem;
-    margin-top: 2rem;
-  }
   .successMsg h5,
   .lostMsg h5 {
-    font-size: 6rem;
+    font-size: 5rem;
   }
-  .successMsg p {
-    font-size: 3rem;
+  .successMsg p,
+  .lostMsg p {
+    font-size: 2rem;
   }
 }
