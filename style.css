@@ -13,10 +13,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  align-content: center;
   flex-direction: column;
   font-family: "Press Start 2P", cursive;
-  height: 100vh;
   gap: 4rem;
 }
 
@@ -30,6 +28,7 @@ header {
   justify-content: flex-start;
   width: 85%;
   padding: 2rem 0;
+  height: 10%;
 }
 .homebtn {
   display: none;
@@ -40,6 +39,7 @@ header {
   flex-direction: column;
   justify-content: center;
   gap: 4rem;
+  height: 100vh;
 }
 
 .homePage button,
@@ -77,8 +77,7 @@ button:focus {
 .levelSec {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  display: none;
+  gap: 3.5rem;
 }
 
 .levelSec button {
@@ -88,10 +87,9 @@ button:focus {
 
 .wrapper {
   display: none;
-  height: 80%;
   flex-direction: column;
   justify-content: center;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 #game {
@@ -114,10 +112,10 @@ button:focus {
 }
 
 .mediumFlexBasis {
-  flex-basis: 18rem;
+  flex-basis: 14rem;
 }
 .hardFlexBasis {
-  flex-basis: 25rem;
+  flex-basis: 15rem;
 }
 
 .card:hover {
@@ -277,13 +275,21 @@ button:focus {
 
 /* media queries section */
 
+@media (max-width: 1490px) {
+  .hardFlexBasis {
+    flex-basis: 20rem;
+  }
+}
+
 @media (max-width: 1280px) {
+
   body {
     width: 100%;
     gap: 1rem;
     margin: 0;
     padding: 0;
     justify-content: center;
+    height: 100vh;
   }
 
   .homePage button,
