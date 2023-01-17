@@ -112,7 +112,7 @@ button:focus {
 }
 
 .mediumFlexBasis {
-  flex-basis: 14rem;
+  flex-basis: 18rem;
 }
 .hardFlexBasis {
   flex-basis: 15rem;
@@ -278,6 +278,9 @@ button:focus {
 @media (max-width: 1490px) {
   .hardFlexBasis {
     flex-basis: 20rem;
+  }
+  .mediumFlexBasis {
+    flex-basis: 14rem;
   }
 }
 
