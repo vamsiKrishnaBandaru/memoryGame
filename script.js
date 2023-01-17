@@ -3,7 +3,9 @@ const gameSection = document.querySelector(".wrapper");
 const title = document.querySelector(".title");
 const homebtn = document.querySelector('.homebtn');
 
-const startButton = document.querySelector('.homePage')
+const homePage = document.querySelector('.homePage')
+const startBtn = document.querySelector('.startBtn');
+
 const count = document.querySelector('.count');
 const flipCount = document.querySelector('.flipCount');
 
@@ -41,10 +43,10 @@ let COLORS = [
 ];
 
 
-startButton.addEventListener('click', () => {
+startBtn.addEventListener('click', () => {
   levelSec.style.display = 'block';
   levelSec.style.display = 'flex';
-  startButton.style.display = 'none';
+  homePage.style.display = 'none';
   homebtn.style.display = 'block';
 });
 

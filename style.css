@@ -78,6 +78,7 @@ button:focus {
   display: flex;
   flex-direction: column;
   gap: 3.5rem;
+  display: none;
 }
 
 .levelSec button {
@@ -172,8 +173,7 @@ button:focus {
   justify-content: center;
   text-align: center;
   display: none;
-  margin-top: 10rem;
-  height: 80vh;
+  margin-top: 15rem;
 }
 
 .successMsg h5,
