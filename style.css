@@ -112,10 +112,10 @@ button:focus {
 }
 
 .mediumFlexBasis {
-  flex-basis: 18rem;
+  flex-basis: 15rem;
 }
 .hardFlexBasis {
-  flex-basis: 15rem;
+  flex-basis: 11.8rem;
 }
 
 .card:hover {
@@ -280,7 +280,7 @@ button:focus {
     flex-basis: 20rem;
   }
   .mediumFlexBasis {
-    flex-basis: 14rem;
+    flex-basis: 13.2rem;
   }
 }
 
