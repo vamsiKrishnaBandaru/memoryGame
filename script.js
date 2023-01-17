@@ -156,7 +156,7 @@ function createDivsForGifs(allGifs) {
     newDiv.addEventListener("click", handleCardClick);
 
     gameContainer.append(newDiv);
-    
+
     if (levelName == "mediumBestScore") {
       newDiv.classList.add("mediumFlexBasis")
     } else if (levelName == "hardBestScore") {
